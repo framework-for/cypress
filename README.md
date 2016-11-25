@@ -11,14 +11,15 @@
   Testing, the way it should be.
 </h3>
 
-Cypress is a next generation testing tool that helps developers write automated tests for the web.
+<p align="center">
+  Cypress is a next generation testing tool that helps developers write automated tests for the web.
+</p>
 
 # Contents
 
 - Overview
-  - Summary
-  - Why?
-  - History
+  - Why Cypress?
+  - Goals
 - In Action
   - Talks
   - Videos
@@ -26,19 +27,21 @@ Cypress is a next generation testing tool that helps developers write automated 
   - Differences
   - Debuggability
   - Error Handling
-  - Flakiness
+  - Preventing Flake
   - Javascript Events
+- Repos
 - FAQ
-  - When will Cypress publicly available?
-  - Is Cypress Open Source?
-  - Is this a commercial project?
-  - What kind of projects work well?
-  - What kind of projects don't work so well?
-  - Can I run this on my CI Server?
-  - Does Cypress support cross browsers?
+  <!-- - Is Cypress publicly available? -->
+  <!-- - Is Cypress Open Source? -->
+  <!-- - Is this a commercial project? -->
+  <!-- - What kind of projects work well? -->
+  <!-- - What kind of projects don't work so well? -->
+  <!-- - Can I run this on my CI Server? -->
+  <!-- - Does Cypress support cross browser testing? -->
 - Roadmap
 - Examples
-- Repos
+- Contributing
+- Legal
 
 # Overview
 

@@ -17,49 +17,49 @@
 
 # Contents
 
-- Overview
-  - Features
-  - Our Mission
-- Why Cypress?
-  - Project Setup
-  - Writing Tests
-  - Management
-- Key Differences
-  - A New Paradigm
-  - Testing Pyramid
-  - Debuggability
-  - Error Handling
-  - Flakiness
-  - Control
-  - Network Stubbing
-  - Videos / Screenshots
-  - Trade Offs
-- Further Reading
+- [Overview](#overview)
+  - [Features](#features)
+  - [Our Mission](#our-mission)
+- [Why Cypress?](#why-cypress)
+  - [Project Setup](#project-setup)
+  - [Writing Tests](#writing-tests)
+  - [Management](#management)
+- [Key Differences](#key-differences)
+  - [A New Paradigm](#a-new-paradigm)
+  - [Testing Pyramid](#testing-pyramid)
+  - [Debuggability](#debuggability)
+  - [Error Handling](#error-handling)
+  - [Flakiness](#flakiness)
+  - [Control](#control)
+  - [Network Stubbing](#network-stubbing)
+  - [Videos / Screenshots](#videos--screenshots)
+  - [Trade Offs](#trade-offs)
+- [Further Reading](#further-reading)
 
 # Overview
 
-Cypress is a next generation testing tool which enables developers to easily test their appliations.  Typically our users are developers and QA engineers building modern applications using modern stacks in JavaScript frameworks. Cypress enables you to write **end to end tests**, **integration tests**, and **unit tests** which drive the browser - like how a real user would.
+Cypress is a next generation testing tool that enables developers to easily test their web appliations.  Typically our users are developers or QA engineers building web applications using modern JavaScript frameworks. Cypress enables developers to write **end to end tests**, **integration tests**, and **unit tests** that drive the browser - like a real user.
 
-Cypress is both a local testing tool, *and* a service. You'll use Cypress to write your tests **every day** while you build your application. When you integrate Cypress into your CI Provider, you can have Cypress record your test runs and make the results available [on our Dashboard](https://on.cypress.io/dashboard-features).
+Cypress is both a local testing tool, *and* a service. Cypress is used to write tests **every day** while you build your application. Integrating Cypress into your CI Provider allows you to record test runs and see the results [on our Dashboard](https://on.cypress.io/dashboard-features).
 
-Cypress is most often compared to **Selenium**; however Cypress is both fundamentally and architectually different. You are not bound by the same restrictions as Selenium, which enables you to think differently, write faster, more reliable tests and ultimately achieve **much more**. Cypress creates a new paradigm shift in the way you test and build your web applications.
+Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); however Cypress is both fundamentally and architectually different. Cypress is not bound by the same restrictions as Selenium. Cypress enables you to write faster, more reliable tests and ultimately achieve **much more** test coverage. Cypress shifts the way you test and build your web applications.
 
 ## Features
-- **Familiar Tools** we're built on such as **Mocha**, **Chai**, **Sinon**, and **Electron**
-- **Extensive APIs** cover over 80+ commands which drive the browser
-- **Networking Stubbing** enables you to stub out your backend and test all edge cases
-- **Developer Focused** flow helps you test every day alongside your typical development workflow
-- **Screenshot / Video** recording happens automatically on failures and during headless runs
-- **Obvious Errors** describe exactly *what* went wrong so you understand what command failed and *why*
-- **Dev Tools / Debugger** support means you can use everything you're used to while you test
-- **Time Travel Snapshots** are taken on every command, giving you the ability to walk back through a test
-- **Fully Baked** with batteries included means you get up and running with no additional installation required
-- **Blazing Fast Runs** restart instantly and are completed as fast as your server is capable of delivering content
-- **Automatic ES2015 Transpilation** allows you to write modern code with zero configuration
+- **Familiar Tools:** built on tools such as [**Mocha**](https://mochajs.org/), [**Chai**](http://chaijs.com/), [**Sinon**](http://sinonjs.org/), and [**Electron**](https://electron.atom.io/)
+- **Extensive APIs:** offers over 80+ commands to drive the browser
+- **Network Stubbing:** enables you to stub out your backend and mock edge cases
+- **Developer Focused:** helps you test every day using your typical development workflow
+- **Screenshots / Videos:** automatically records on failures and during headless runs
+- **Obvious Errors:** see exactly *what* went wrong so you understand what command failed and *why*
+- **Dev Tools / Debugger:** use every developer tool you're used to while you test
+- **Time Travel Snapshots:** time travel to every command with the ability to walk back through every test
+- **Fast Setup:** get up and running with no additional installation required
+- **Blazing Fast Runs:** tests run as fast as your server is capable of delivering content
+- **Automatic ES2015 Transpilation:** write modern code with zero configuration
 
 ## Our Mission
 
-Cypress is built on the best open source technologies, and naturally we fully embrace open source in order to be successful. Our Dashboard runs Public Projects for free - just like Github, TravisCI, CircleCI, and most other developer tools you know and love.
+Cypress is built on the best open source technologies, and naturally we fully embrace open source in order to be successful. Our [Dashboard](https://on.cypress.io/dashboard-features) runs Public Projects for free - just like [Github](https://github.com/), [TravisCI](https://travis-ci.org/), [CircleCI](https://circleci.com) and other developer tools you know and love.
 
 Open source, developer productivity and happiness. Create an ecosystem that thrives. Champion a testing process that is effective, fast, and consistent. Help developers build a new generation of modern applications faster, better, and without stress or anxiety.
 
@@ -71,47 +71,45 @@ To be successful you must enable, nurture and provide a path to success for user
 
 The way we develop web applications has completely transformed over the last 5 years. The existing testing tools were built for a web that is long gone. When we try to test modern application using old tools, it doesn't work. Over and over again, we find that developers struggle with the following challenges:
 
-- Setup
-- Writing
-- Management
+- [Project Setup](#project-setup)
+- [Writing Tests](#writing-tests)
+- [Management](#management)
 
 ## Project Setup
 
-Developers often complain how difficult it is to started testing their projects. Oftentimes setup requires a considerable amount of configuration, it involves cobbling together many different tools, installing various browser drivers, and writing a lot of boilerplate to get to the first test.
+Developers often complain how difficult it is to start testing their projects. Oftentimes setup requires a considerable amount of configuration. Setup involves configuring many different tools, installing various browser drivers and writing a lot of boilerplate to get to the first test.
 
-**With Cypress, we want you to go from nothing to your first passing test in under 5 minutes.**
+**With Cypress, you can write your first passing test in under 5 minutes.**
 
-Cypress comes fully baked with every tool you need and should "just work" out of the box. It can launch headed browsers and **even run headlessly** without a single additional installation step.
-
-We've built on top of tools you're likely already familiar with and have designed our API's to leverage existing knowledge you likely already possess. We're not reinventing the wheel, we just trying to be the iPhone replacing morse code.
+Cypress comes fully baked with every tool you need and just works out of the box. It can launch headed browsers and **even run headlessly** without a single installation required.
 
 Cypress comes with ES2015 support out of the box and is built on top of:
 
-- Mocha
-- Chai
-- Sinon
+- [Mocha](https://mochajs.org/)
+- [Chai](http://chaijs.com/)
+- [Sinon](http://sinonjs.org/)
 
-We provide you both a full GUI experience and offer a programatic CLI tool to interact with Cypress.
+We provide you both a full GUI experience and offer a programatic [CLI tool](https://docs.cypress.io/docs/cli) to interact with Cypress.
 
-When you add your first project, we automatically seed it with example test code and provide you a fully opinionated project structure.
+When you [add your first project](https://docs.cypress.io/docs/projects#section-adding-a-new-project), we automatically seed it with example test code and provide you with a fully opinionated project structure.
 
 ![project-setup](https://cloud.githubusercontent.com/assets/1268976/23642100/5983acec-02c6-11e7-8951-48cd40cb294b.gif)
 
 ## Writing Tests
 
-Because of Webdriver's architecture, developers often struggle to write effective tests. Here we typically find that:
+Relying on [Webdriver's](http://www.seleniumhq.org/projects/webdriver/) architecture often leaves developers struggling to write effective tests. When writing tests, we typically find that:
 
-- traditional e2e tests run incredibly slow
-- tests are difficult to write
-- when errors happen its difficult to pinpoint the root cause
-- stack traces in the terminal are mostly worthless
-- you do not have access to Dev Tools
-- tests you do write are oftentimes inconsistent and flaky
-- you have very little control over your application
+- Traditional e2e tests run incredibly slow
+- Tests are difficult to write
+- When errors happen its difficult to debug the root cause
+- Stack traces in the terminal are mostly worthless
+- You do not have access to Dev Tools
+- Tests you do write are oftentimes inconsistent and flaky
+- You have very little control over your application
 
-All of these problems manifest them by creating misalignment between the testing process and the development process. Tests are often written **after** a feature has been created. It can sometimes take **longer** to write a passing test for a feature than it took to actually build it!
+All of these problems stem from the gap between the testing process and the development process. Tests are often written **after** a feature has been implemented. It can sometimes take **longer** to write a passing test for a feature than it took to actually build it!
 
-We've spent years building Cypress to overcome these challenges by rewritting the entire testing architecture and creating a familiar environment in which the developer can build their application and test all at **the same time**.
+We've spent years building Cypress to overcome these challenges by rewritting the entire testing architecture and creating a familiar environment in which the developer can build their application and test at **the same time**.
 
 Cypress runs orders of magnitudes faster, provides you the ability to debug your application using the Dev Tools you're already familiar with, and enables you to control the environment of your application just like a unit test.
 
@@ -127,11 +125,11 @@ We fundamentally believe in developer happiness. We've created hundreds of error
 
 With the existing testing tools - after you've spent days, weeks, or even months building up a fleet of tests - you will often run them in CI (Continuous Integration).
 
-The problem we find here is that due to the architecture problems of Selenium, it is nearly impossible to manage these tests. They often fail for "no good reason", and while it is possible - getting screenshots, videos, and logs of what happened takes a lot of work. Without these, debugging failing tests is nearly impossible and it's where time and productivity goes to die.
+The problem we find here is that due to the architecture problems of Selenium, it is nearly impossible to manage these tests. They often fail for "no good reason", and while it is possible - getting screenshots, videos, and logs of what happened takes a lot of work. Without these, debugging failing tests is nearly impossible and it's where time and productivity is lost.
 
-Cypress comes fully baked with video and screenshot support. A video will always be created when you run headlessly, and screenshots will automatically be taken on failure (or when you've manually told us to one one).
+Cypress comes fully baked with video and screenshot support. A video will always be created when you run headlessly, and screenshots will automatically be taken on failure (or when you've manually told us to take one).
 
-We also enable you to **record your test runs** on our [Dashboard](https://on.cypress.io/dashboard). This is a service we've built which gives you easy access to see and share your recorded runs.
+We also enable you to **record your test runs** on our [Dashboard](https://on.cypress.io/dashboard). This is a service we've built that gives you easy access to see and share your recorded runs.
 
 **This is just the tip of the iceberg.**
 

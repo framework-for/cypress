@@ -44,7 +44,7 @@ Cypress is both a local testing tool, *and* a service. You'll use Cypress to wri
 
 Cypress is most often compared to **Selenium**; however Cypress is both fundamentally and architectually different. You are not bound by the same restrictions as Selenium, which enables you to think differently, write faster, more reliable tests and ultimately achieve **much more**. Cypress creates a new paradigm shift in the way you test and build your web applications.
 
-### Features
+## Features
 - **Familiar Tools** we're built on such as **Mocha**, **Chai**, **Sinon**, and **Electron**
 - **Extensive APIs** cover over 80+ commands which drive the browser
 - **Networking Stubbing** enables you to stub out your backend and test all edge cases
@@ -57,7 +57,7 @@ Cypress is most often compared to **Selenium**; however Cypress is both fundamen
 - **Blazing Fast Runs** restart instantly and are completed as fast as your server is capable of delivering content
 - **Automatic ES2015 Transpilation** allows you to write modern code with zero configuration
 
-### Our Mission
+## Our Mission
 
 Cypress is built on the best open source technologies, and naturally we fully embrace open source in order to be successful. Our Dashboard runs Public Projects for free - just like Github, TravisCI, CircleCI, and most other developer tools you know and love.
 
@@ -75,7 +75,7 @@ The way we develop web applications has completely transformed over the last 5 y
 - Writing
 - Management
 
-### Project Setup
+## Project Setup
 
 Developers often complain how difficult it is to started testing their projects. Oftentimes setup requires a considerable amount of configuration, it involves cobbling together many different tools, installing various browser drivers, and writing a lot of boilerplate to get to the first test.
 
@@ -97,7 +97,7 @@ When you add your first project, we automatically seed it with example test code
 
 ![project-setup](https://cloud.githubusercontent.com/assets/1268976/23642100/5983acec-02c6-11e7-8951-48cd40cb294b.gif)
 
-### Writing Tests
+## Writing Tests
 
 Because of Webdriver's architecture, developers often struggle to write effective tests. Here we typically find that:
 
@@ -123,7 +123,7 @@ We fundamentally believe in developer happiness. We've created hundreds of error
 
 ![writing-tests](https://cloud.githubusercontent.com/assets/1268976/23642090/4b1decee-02c6-11e7-8c5c-ac6a0842ae9b.gif)
 
-### Management
+## Management
 
 With the existing testing tools - after you've spent days, weeks, or even months building up a fleet of tests - you will often run them in CI (Continuous Integration).
 
@@ -149,7 +149,9 @@ Our Dashboard is attempting to solve some of the hardest challenges of managing 
 
 # Key Differences
 
-### A new paradigm
+Let's investigate some of the key differences between Cypress and other testing tools.
+
+## A new paradigm
 
 Contracts between client + server. Total control. Unit test like. Less e2e, more integration. Bypass your UI. Take shortcuts. Precision.
 
@@ -163,7 +165,7 @@ Use cases:
 
 We have a lot of recipes showing what Cypress can do.
 
-### Testing Pyramid
+## Testing Pyramid
 
 Just like a balanced diet, the testing pyramid recommends 3 primary layers of testing.
 
@@ -205,7 +207,19 @@ By following along best practices we will help guide you to write simple, effect
 
 Testing is both an art and a science and it can take awhile before you learn how to be deconstruct your application and tease apart the seams which will enable you to write better, faster tests.
 
-### Architecture
+## Debuggability
+
+## Error Handling
+
+## Flakiness
+
+## Control
+
+## Networking Stubbing
+
+## Videos / Screenshots
+
+## Architecture
 
 Cypress is not built on **Selenium / Webdriver**. While it's possible we may use Webdriver for very specific tasks in the future, our automation layer is completely different.
 

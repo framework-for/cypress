@@ -59,13 +59,15 @@ Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); ho
 
 ## Our Mission
 
-Cypress is built on the best open source technologies, and naturally we fully embrace open source in order to be successful. Our [Dashboard](https://on.cypress.io/dashboard-features) runs Public Projects for free - just like [Github](https://github.com/), [TravisCI](https://travis-ci.org/), [CircleCI](https://circleci.com) and other developer tools you know and love.
+Cypress is built on the best open source technologies, and naturally we fully embrace open source. It's essential for us to be successful. Our services will always be **optional**, and Cypress itself will always work indepedently of them. Our [Dashboard](https://on.cypress.io/dashboard-features) even runs Public Projects for free - just like [Github](https://github.com/), [TravisCI](https://travis-ci.org/), [CircleCI](https://circleci.com) and other developer tools you know and love.
 
-Open source, developer productivity and happiness. Create an ecosystem that thrives. Champion a testing process that is effective, fast, and consistent. Help developers build a new generation of modern applications faster, better, and without stress or anxiety.
+Our mission is to build a thriving, open source ecosystem that enhances productivity, makes testing a fun enjoyable experience, and generates developer happiness. We hold ourselves accountable to champion a testing process **that actually works**. We expect our [documentation](https://on.cypress.io) to be simple, approachable, not presumptious, and enable you to fully understand not just the **what** but the **why**.
 
-Your tests will never live or die by us. They are yours, part of your source, your investment, and nothing will ever stop them from running.
+We want to help developers build a new generation of modern applications faster, better, and without the stress and anxiety associated with managing tests and their eventual failures.
 
-To be successful you must enable, nurture and provide a path to success for users. We want you to build, extend, fix, support, and enhance Cypress. Testing needs a lot of love, and we are here to foster this into an ecosystem everyone can learn and benefit from.
+We know that in order for us to be successful, that we must enable, nurture and provide a clear path to success for our users. Your test code is an investment into Cypress, and it will never be coupled to us as a company or team. Your code will always run independently and be free from needing us to exist.
+
+We believe testing needs a lot of love, and we are here to foster a tool, service, and community that everyone can learn and benefit from. We're here solving the hardest pain points that every developer working on the web identifies with. We hope that you'll join us in making Cypress a lasting community that helps everyone win.
 
 # Why Cypress?
 
@@ -79,9 +81,9 @@ The way we develop web applications has completely transformed over the last 5 y
 
 Developers often complain how difficult it is to start testing their projects. Oftentimes setup requires a considerable amount of configuration. Setup involves configuring many different tools, installing various browser drivers and writing a lot of boilerplate to get to the first test.
 
-**With Cypress, you can write your first passing test in under 5 minutes.**
+With Cypress, you can write your first passing test in **under 5 minutes**.
 
-Cypress comes fully baked with every tool you need and just works out of the box. It can launch headed browsers and **even run headlessly** without a single installation required.
+Cypress comes fully baked with every tool you need and just works out of the box. It can launch headed browsers and **even run headlessly** without a single additional installation step.
 
 Cypress comes with ES2015 support out of the box and is built on top of:
 
@@ -109,7 +111,7 @@ Relying on [Webdriver's](http://www.seleniumhq.org/projects/webdriver/) architec
 
 All of these problems stem from the gap between the testing process and the development process. Tests are often written **after** a feature has been implemented. It can sometimes take **longer** to write a passing test for a feature than it took to actually build it!
 
-We've spent years building Cypress to overcome these challenges by rewritting the entire testing architecture and creating a familiar environment in which the developer can build their application and test at **the same time**.
+We've spent years building Cypress to overcome these challenges by rewriting the entire testing architecture and creating a familiar environment in which the developer can build their application and test at **the same time**.
 
 Cypress runs orders of magnitudes faster, provides you the ability to debug your application using the Dev Tools you're already familiar with, and enables you to control the environment of your application just like a unit test.
 
@@ -131,13 +133,11 @@ Cypress comes fully baked with video and screenshot support. A video will always
 
 We also enable you to **record your test runs** on our [Dashboard](https://on.cypress.io/dashboard). This is a service we've built that gives you easy access to see and share your recorded runs.
 
-**This is just the tip of the iceberg.**
-
 Our Dashboard is attempting to solve some of the hardest challenges of managing tests in CI. We are working towards:
 
 - giving you live access to your CI runs
 - providing you all network requests / responses you can inspect later
-- providing you logs of **everything** that happened inside of the browser
+- [providing you logs of **everything** that happened inside of the browser](https://github.com/cypress-io/cypress/issues/448)
 - analytics which can tell you details about the overall health of your tests
 - an intelligent "diff" of a test which failed today but passed previously
 - cross browser support with automatic integration into Sauce Labs + Browser Stack

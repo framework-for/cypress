@@ -38,7 +38,7 @@
 
 # Overview
 
-Cypress is a next generation testing tool that enables developers to easily test their web appliations. Typically our users are developers or QA engineers building web applications using modern JavaScript frameworks. Cypress enables developers to write **end to end tests**, **integration tests**, and **unit tests** that drive the browser - like a real user.
+Cypress is a next generation testing tool that enables developers to easily test their web applications. Typically our users are developers or QA engineers building web applications using modern JavaScript frameworks. Cypress enables developers to write **end to end tests**, **integration tests**, and **unit tests** that run in the browser.
 
 Cypress is both a local testing tool, *and* a service. Typically you'd use Cypress locally to write tests **every day** while you build your application. After integrating Cypress into your CI Provider you can have [our Dashboard](https://on.cypress.io/dashboard-features) record your test runs and see the results.
 
@@ -211,34 +211,39 @@ If you're coming from Selenium / Webdriver you might expect errors to look this 
 
 ![screen shot 2015-10-13 at 11 43 48 am](https://cloud.githubusercontent.com/assets/1268976/23825052/a9c1a2b2-0650-11e7-91c3-07ef5ddf9c3d.png)
 
-Stack traces in the terminal are essentially useless. Browsers are enormously complex objects - and you cannot possibly boil down an error to a string of text.
+What's wrong with this error? Well, stack traces in the terminal are essentially useless. Browsers are enormously complex objects, and their behavior cannot possibly be boiled down to a single error (which is just a string of text).
 
 Do you have any idea why this element isn't visible?
 
-It could be that:
+These are all valid potential answers:
 
 - You wrote your selector wrong
-- It just hasn't rendered yet
-- Something in the Javascript is throwing an error
+- Your app just hasn't rendered yet
+- Something in your Javascript code is throwing an error
 - A network request failed earlier (?)
-- A network request is performing slower than usual
-- Someone actually changed the logic and it is legitimately busted
+- A network request is currently in flight
+- There is a real regression and a legitimate error
 
-The whole problem is that you cannot easily figure this out. You're often left wondering, is something **really** wrong, did I mess something up, or are my tests just **flaky**?
+The whole problem is that you cannot easily figure this out.
+
+You're often left wondering:
+- is something **really** wrong?
+- did I write my test code poorly?
+- or are my tests just **flaky** for no good reason?
 
 At Cypress, we've built **everything** around solving this fundamental problem. We strive to provide you everything so that you can quickly understand **what** and more importantly **why** something failed.
 
 We've done this by:
 
 - Writing hundreds of custom error messages in plain english
-- Referencing you to external documentation when extra explanation is needed
+- Referencing you to external documentation for complex errors
 - Creating a dashboard to show you your recorded test runs
 - Enabling Dev Tools access while tests run
-- `debugger` support in your test code **or** app code
+- Adding support for `debugger` in either test code **or** app code
 - Snapshotting (cycling / clicking / highlighting) all commands
-- Providing a GUI such as indicating number of elements logged out
+- Providing a GUI such as indicating number of elements found for a selector
 - Clicking on commands to see additional bits of information (type)
-- Page events logged
+- Logging page events such as XHR's, form submissions, page loads, URL changes
 
 Even when you are testing headlessly and you see an error in the console it'll be much friendly and provide you a lot more data.
 
@@ -246,7 +251,47 @@ Even when you are testing headlessly and you see an error in the console it'll b
 
 <image of network request failing>
 
-Naturally you'll also be able to inspect a video, look at the command log, look at screenshots, and soon you'll have logs for literally everything to help you track down a failure.
+Beyond just a friendly error, you'll also able to watch a video, see command logs, view screenshots, and soon you'll have [logs for literally everything that happened in the browser](https://github.com/cypress-io/cypress/issues/448) to help you track down a failure.
+
+***
+
+### Error Messages
+
+![screen shot 2017-03-11 at 2 38 09 pm](https://cloud.githubusercontent.com/assets/1268976/23826334/81319bdc-0668-11e7-9801-f92d53ddc887.png)
+
+![screen shot 2017-03-11 at 2 37 25 pm](https://cloud.githubusercontent.com/assets/1268976/23826333/81317fee-0668-11e7-896b-1b7f91de8b31.png)
+
+***
+
+### Complex Errors
+
+![screen shot 2016-12-16 at 10 52 08 pm](https://cloud.githubusercontent.com/assets/1268976/21284187/5374b152-c3e2-11e6-9811-c79ead05930b.png)
+
+![screen shot 2015-12-30 at 11 44 22 pm](https://cloud.githubusercontent.com/assets/1268976/12061262/4f9a252e-af4f-11e5-9139-9c8bdb08ae58.png)
+
+***
+
+### Debugger Support
+
+**In test code:**
+![screen shot 2017-03-11 at 2 44 32 pm](https://cloud.githubusercontent.com/assets/1268976/23826393/56d1adf4-0669-11e7-9612-a55ab59c5e4c.png)
+
+**In app code:**
+![screen shot 2017-03-11 at 2 45 00 pm](https://cloud.githubusercontent.com/assets/1268976/23826394/56d2be7e-0669-11e7-9b70-dbbc6cd55bda.png)
+
+### GUI Indicators
+
+**Page Events**
+
+![screen shot 2017-03-11 at 2 58 43 pm](https://cloud.githubusercontent.com/assets/1268976/23826595/ed3272ee-066c-11e7-8a65-e82b7d70658d.png)
+
+**Number of elements found**
+
+![screen shot 2017-03-11 at 2 57 47 pm](https://cloud.githubusercontent.com/assets/1268976/23826557/6866da8c-066c-11e7-83fc-e3c22dcce767.png)
+
+**Command Inspection / Time Travel**
+
+![timetravel](https://cloud.githubusercontent.com/assets/1268976/23826558/6866fc7e-066c-11e7-89e2-32ee2bf303e9.gif)
 
 ## Flakiness
 

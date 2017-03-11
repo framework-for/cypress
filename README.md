@@ -12,7 +12,7 @@
 </h3>
 
 <p align="center">
-  Cypress is a next generation testing tool that helps developers write tests as they build apps.
+  Cypress is a next generation testing tool that helps developers write tests while building apps.
 </p>
 
 # Contents

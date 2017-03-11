@@ -253,41 +253,45 @@ Beyond just a friendly error, you'll also able to watch a video, see command log
 
 ### Error Messages
 
-![screen shot 2017-03-11 at 2 38 09 pm](https://cloud.githubusercontent.com/assets/1268976/23826334/81319bdc-0668-11e7-9801-f92d53ddc887.png)
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826334/81319bdc-0668-11e7-9801-f92d53ddc887.png" width="50%" />
 
-![screen shot 2017-03-11 at 2 37 25 pm](https://cloud.githubusercontent.com/assets/1268976/23826333/81317fee-0668-11e7-896b-1b7f91de8b31.png)
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826333/81317fee-0668-11e7-896b-1b7f91de8b31.png" width="50%" />
 
 ***
 
 ### Complex Errors
 
-![screen shot 2016-12-16 at 10 52 08 pm](https://cloud.githubusercontent.com/assets/1268976/21284187/5374b152-c3e2-11e6-9811-c79ead05930b.png)
+<img src="https://cloud.githubusercontent.com/assets/1268976/21284187/5374b152-c3e2-11e6-9811-c79ead05930b.png" width="25%" />
 
-![screen shot 2015-12-30 at 11 44 22 pm](https://cloud.githubusercontent.com/assets/1268976/12061262/4f9a252e-af4f-11e5-9139-9c8bdb08ae58.png)
+<img src="https://cloud.githubusercontent.com/assets/1268976/12061262/4f9a252e-af4f-11e5-9139-9c8bdb08ae58.png" width="40%" />
 
 ***
 
 ### Debugger Support
 
 **In test code:**
-![screen shot 2017-03-11 at 2 44 32 pm](https://cloud.githubusercontent.com/assets/1268976/23826393/56d1adf4-0669-11e7-9612-a55ab59c5e4c.png)
+
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826393/56d1adf4-0669-11e7-9612-a55ab59c5e4c.png" width="40%" />
 
 **In app code:**
-![screen shot 2017-03-11 at 2 45 00 pm](https://cloud.githubusercontent.com/assets/1268976/23826394/56d2be7e-0669-11e7-9b70-dbbc6cd55bda.png)
+
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826394/56d2be7e-0669-11e7-9b70-dbbc6cd55bda.png" width="40%" />
+
+***
 
 ### GUI Indicators
 
-**Page Events**
+**Page Events:**
 
 ![screen shot 2017-03-11 at 2 58 43 pm](https://cloud.githubusercontent.com/assets/1268976/23826595/ed3272ee-066c-11e7-8a65-e82b7d70658d.png)
 
-**Number of elements found**
+**Number of elements found:**
 
 ![screen shot 2017-03-11 at 2 57 47 pm](https://cloud.githubusercontent.com/assets/1268976/23826557/6866da8c-066c-11e7-83fc-e3c22dcce767.png)
 
-**Command Inspection / Time Travel**
+**Command Inspection / Time Travel:**
 
-![timetravel](https://cloud.githubusercontent.com/assets/1268976/23826558/6866fc7e-066c-11e7-89e2-32ee2bf303e9.gif)
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826558/6866fc7e-066c-11e7-89e2-32ee2bf303e9.gif" width="70%" />
 
 ## Flakiness
 

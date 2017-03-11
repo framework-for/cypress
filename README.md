@@ -209,7 +209,7 @@ Testing is both an art and a science and it can take awhile before you learn how
 
 If you're coming from Selenium / Webdriver you might expect errors to look this like:
 
-![screen shot 2015-10-13 at 11 43 48 am](https://cloud.githubusercontent.com/assets/1268976/23825052/a9c1a2b2-0650-11e7-91c3-07ef5ddf9c3d.png)
+<img src="https://cloud.githubusercontent.com/assets/1268976/23825052/a9c1a2b2-0650-11e7-91c3-07ef5ddf9c3d.png" width="75%" />
 
 What's wrong with this error? Well, stack traces in the terminal are essentially useless. Browsers are enormously complex objects, and their behavior cannot possibly be boiled down to a single error (which is just a string of text).
 
@@ -261,9 +261,9 @@ Beyond just a friendly error, you'll also able to watch a video, see command log
 
 ### Complex Errors
 
-<img src="https://cloud.githubusercontent.com/assets/1268976/21284187/5374b152-c3e2-11e6-9811-c79ead05930b.png" width="25%" />
+<img src="https://cloud.githubusercontent.com/assets/1268976/21284187/5374b152-c3e2-11e6-9811-c79ead05930b.png" width="50%" />
 
-<img src="https://cloud.githubusercontent.com/assets/1268976/12061262/4f9a252e-af4f-11e5-9139-9c8bdb08ae58.png" width="40%" />
+<img src="https://cloud.githubusercontent.com/assets/1268976/12061262/4f9a252e-af4f-11e5-9139-9c8bdb08ae58.png" width="50%" />
 
 ***
 
@@ -271,11 +271,11 @@ Beyond just a friendly error, you'll also able to watch a video, see command log
 
 **In test code:**
 
-<img src="https://cloud.githubusercontent.com/assets/1268976/23826393/56d1adf4-0669-11e7-9612-a55ab59c5e4c.png" width="40%" />
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826393/56d1adf4-0669-11e7-9612-a55ab59c5e4c.png" width="50%" />
 
 **In app code:**
 
-<img src="https://cloud.githubusercontent.com/assets/1268976/23826394/56d2be7e-0669-11e7-9b70-dbbc6cd55bda.png" width="40%" />
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826394/56d2be7e-0669-11e7-9b70-dbbc6cd55bda.png" width="50%" />
 
 ***
 

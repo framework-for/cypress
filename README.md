@@ -8,11 +8,11 @@
 </p>
 
 <h3 align="center">
-  Automated testing for the modern web.
+  Automated testing for the modern web
 </h3>
 
 <p align="center">
-  Cypress is a next generation testing tool that helps developers write automated tests for the web.
+  Cypress is a next generation testing tool that helps developers write tests as they build apps.
 </p>
 
 # Contents
@@ -28,21 +28,21 @@
   - [A New Paradigm](#a-new-paradigm)
   - [Testing Pyramid](#testing-pyramid)
   - [Debuggability](#debuggability)
-  - [Error Handling](#error-handling)
   - [Flakiness](#flakiness)
   - [Control](#control)
   - [Network Stubbing](#network-stubbing)
   - [Videos / Screenshots](#videos--screenshots)
+  - [Architecture](#videos--screenshots)
   - [Trade Offs](#trade-offs)
 - [Further Reading](#further-reading)
 
 # Overview
 
-Cypress is a next generation testing tool that enables developers to easily test their web appliations.  Typically our users are developers or QA engineers building web applications using modern JavaScript frameworks. Cypress enables developers to write **end to end tests**, **integration tests**, and **unit tests** that drive the browser - like a real user.
+Cypress is a next generation testing tool that enables developers to easily test their web appliations. Typically our users are developers or QA engineers building web applications using modern JavaScript frameworks. Cypress enables developers to write **end to end tests**, **integration tests**, and **unit tests** that drive the browser - like a real user.
 
-Cypress is both a local testing tool, *and* a service. Cypress is used to write tests **every day** while you build your application. Integrating Cypress into your CI Provider allows you to record test runs and see the results [on our Dashboard](https://on.cypress.io/dashboard-features).
+Cypress is both a local testing tool, *and* a service. Typically you'd use Cypress locally to write tests **every day** while you build your application. After integrating Cypress into your CI Provider you can have [our Dashboard](https://on.cypress.io/dashboard-features) record your test runs and see the results.
 
-Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); however Cypress is both fundamentally and architectually different. Cypress is not bound by the same restrictions as Selenium. Cypress enables you to write faster, more reliable tests and ultimately achieve **much more** test coverage. Cypress shifts the way you test and build your web applications.
+Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); however Cypress is both fundamentally and architectually different. Cypress is not bound by the same restrictions as Selenium. Cypress enables you to write faster, more reliable tests and ultimately achieve **much more** test coverage. Cypress fundamentally shifts the way you can test and build your web applications.
 
 ## Features
 - **Familiar Tools:** built on tools such as [**Mocha**](https://mochajs.org/), [**Chai**](http://chaijs.com/), [**Sinon**](http://sinonjs.org/), and [**Electron**](https://electron.atom.io/)
@@ -207,15 +207,75 @@ Testing is both an art and a science and it can take awhile before you learn how
 
 ## Debuggability
 
-## Error Handling
+If you're coming from Selenium / Webdriver you might expect errors to look this like:
+
+![screen shot 2015-10-13 at 11 43 48 am](https://cloud.githubusercontent.com/assets/1268976/23825052/a9c1a2b2-0650-11e7-91c3-07ef5ddf9c3d.png)
+
+Stack traces in the terminal are essentially useless. Browsers are enormously complex objects - and you cannot possibly boil down an error to a string of text.
+
+Do you have any idea why this element isn't visible?
+
+It could be that:
+
+- You wrote your selector wrong
+- It just hasn't rendered yet
+- Something in the Javascript is throwing an error
+- A network request failed earlier (?)
+- A network request is performing slower than usual
+- Someone actually changed the logic and it is legitimately busted
+
+The whole problem is that you cannot easily figure this out. You're often left wondering, is something **really** wrong, did I mess something up, or are my tests just **flaky**?
+
+At Cypress, we've built **everything** around solving this fundamental problem. We strive to provide you everything so that you can quickly understand **what** and more importantly **why** something failed.
+
+We've done this by:
+
+- Writing hundreds of custom error messages in plain english
+- Referencing you to external documentation when extra explanation is needed
+- Creating a dashboard to show you your recorded test runs
+- Enabling Dev Tools access while tests run
+- `debugger` support in your test code **or** app code
+- Snapshotting (cycling / clicking / highlighting) all commands
+- Providing a GUI such as indicating number of elements logged out
+- Clicking on commands to see additional bits of information (type)
+- Page events logged
+
+Even when you are testing headlessly and you see an error in the console it'll be much friendly and provide you a lot more data.
+
+<image of contains failing>
+
+<image of network request failing>
+
+Naturally you'll also be able to inspect a video, look at the command log, look at screenshots, and soon you'll have logs for literally everything to help you track down a failure.
 
 ## Flakiness
 
+- Webdriver remote protocol is the problem
+- Doesn't understand what's going on in the page
+- Cypress innovative assertions to page state
+- Never explicit waits
+- Can modify its behavior in real time
+
 ## Control
+
+- Native access to every object
+- Spying / stubbing support
+- Network traffic stubbing
+- Waiting on request / responses
+- Assertions on requests
+- Edge case management
+- Tighter control between the server + client
 
 ## Networking Stubbing
 
+- Control webserver
+- Build without even having a server
+
 ## Videos / Screenshots
+
+- Headless video recording
+- Screenshots when tests fail
+- Hosted on our dashboard
 
 ## Architecture
 
@@ -233,6 +293,20 @@ This means we have the best of both worlds - if we want to synchronously query f
 
 This gives us flexibility and we can yield that same choice and flexibility back to the developer.
 
+## Trade Offs
+
+- One superdomain per test
+- One browser
+- Some restrictions / less restrictions
+- More control
+- Security restrictions
+- Not for crawling the web
+- Not really for existing production applications
+- Not all API's have been implemented
+- No cross browser support
+- No native events (yet)
+- Developer / QA engineer focused (must understand your app)
+
 # Further Reading
 
 Now that you have an idea of where we're going with Cypress, let's dive in!
@@ -244,4 +318,5 @@ Link | Description
 [Examples](https://on.cypress.io/all-example-apps) | Full example applications
 [Recipes](https://github.com/cypress-io/cypress-example-recipes) | Specific tasks and approaches
 [Roadmap](https://on.cypress.io/roadmap) | Upcoming major milestones we're working on
-[Talks](https://www.cypress.io/explore) | Conference talks, interviews, podcasts, and shows
+[Talks](https://www.cypress.io/explore) | Official conference talks, interviews, podcasts, and shows
+[News](https://www.cypress.io/explore) | An unofficial list of 3rd party blogs and articles

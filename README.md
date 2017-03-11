@@ -228,7 +228,7 @@ The whole problem is that you cannot easily figure this out.
 
 You're often left wondering:
 - is something **really** wrong?
-- did I write my test code poorly?
+- did I write my test code properly?
 - or are my tests just **flaky** for no good reason?
 
 At Cypress, we've built **everything** around solving this fundamental problem. We strive to provide you everything so that you can quickly understand **what** and more importantly **why** something failed.
@@ -240,16 +240,12 @@ We've done this by:
 - Creating a dashboard to show you your recorded test runs
 - Enabling Dev Tools access while tests run
 - Adding support for `debugger` in either test code **or** app code
-- Snapshotting (cycling / clicking / highlighting) all commands
+- Snapshotting and time traveling through all commands
 - Providing a GUI such as indicating number of elements found for a selector
-- Clicking on commands to see additional bits of information (type)
+- Clicking on commands to see additional bits of information
 - Logging page events such as XHR's, form submissions, page loads, URL changes
 
 Even when you are testing headlessly and you see an error in the console it'll be much friendly and provide you a lot more data.
-
-<image of contains failing>
-
-<image of network request failing>
 
 Beyond just a friendly error, you'll also able to watch a video, see command logs, view screenshots, and soon you'll have [logs for literally everything that happened in the browser](https://github.com/cypress-io/cypress/issues/448) to help you track down a failure.
 

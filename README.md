@@ -291,7 +291,7 @@ Beyond just a friendly error, you'll also able to watch a video, see command log
 
 **Command Inspection / Time Travel:**
 
-<img src="https://cloud.githubusercontent.com/assets/1268976/23826558/6866fc7e-066c-11e7-89e2-32ee2bf303e9.gif" width="70%" />
+<img src="https://cloud.githubusercontent.com/assets/1268976/23826781/144e60e0-0672-11e7-995d-64e92bc43e65.gif" width="80%" />
 
 ## Flakiness
 

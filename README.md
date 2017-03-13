@@ -103,25 +103,23 @@ When [adding our first project](https://docs.cypress.io/docs/projects#section-ad
 
 Relying on [Webdriver's](http://www.seleniumhq.org/projects/webdriver/) architecture often leaves developers struggling to write effective tests. When writing tests, we typically find that:
 
-- Traditional e2e tests run incredibly slow
-- Tests are difficult to write
-- When errors happen its difficult to debug the root cause
-- Stack traces in the terminal are mostly worthless
-- You do not have access to Dev Tools
-- Tests you do write are oftentimes inconsistent and flaky
-- You have very little control over your application
+- Tests are unreasonably difficult to write
+- Tests are painfully slow to run
+- When errors happen, it's difficult to discern the root cause
+- Stack traces in the terminal are frequently worthless
+- We do not have access to Dev Tools
+- Tests are often inconsistent and flaky
+- We have little control over our application under test
 
-All of these problems stem from the gap between the testing process and the development process. Tests are often written **after** a feature has been implemented. It can sometimes take **longer** to write a passing test for a feature than it took to actually build it!
+These problems stem from the gap between the testing process and the development process. Tests are often written **after** a feature has been implemented. It can take **longer** to write a passing test for a feature than it took to actually build the feature itself!
 
-We've spent years building Cypress to overcome these challenges by rewriting the entire testing architecture and creating a familiar environment in which the developer can build their application and test at **the same time**.
+In order for Cypress to overcome these challenges, we've spent years rewriting the entire testing architecture and creating a familiar environment in which the developer can build their application and the tests that drive it **at the same time**. (We believe in it so much that we've built Cypress itself this way!)
 
-Cypress runs orders of magnitudes faster, provides you the ability to debug your application using the Dev Tools you're already familiar with, and enables you to control the environment of your application just like a unit test.
+Cypress can run orders of magnitude faster, provides us the ability to debug our applications using the Dev Tools we're already familiar with, and enables us to control our application's environment just like a unit test. This enables an innovative kind of front-end TDD flow for features *as we build them*: instead of manually refreshing the browser and hacking on code, we iteratively build up a test in tandem with the feature. First, we use Cypress as an automation tool, driving the application itself to the feature we're working on. As the details of the feature arise, we encode them into the test, ensuring correctness as we work. Finally, when we lean back and look over the feature we get a strange and wonderful sense that we got the test "for free".
 
-This enables you (the developer) to actually TDD features as you build them. Instead of manually refreshing the browser and hacking on code - you can iteratively write a partially incomplete test to automate the browser getting to the feature you're working on. As you complete the feature, you can finish the test which means you essentially get the test "for free".
+The early adopters of Cypress who've recognized this process have seen a tremendous boost in productivity. Developers end up getting **more** done in a day, in addition to having well-factored and well-tested code.
 
-The early adopters of Cypress who've recognized this process have seen a tremendous boost in productivity. Developers end up getting **more** done in a day, in addition to having well factored and tested code.
-
-We fundamentally believe in developer happiness. We've created hundreds of error messages that attempt to explain in simple terms what went wrong. Oftentimes when developers see error messages they are confusing, and result in being "dead ends". We've done our very best (and are always improving) trying to hint, nudge, and explain how to best approach writing and running your tests.
+We fundamentally believe in developer happiness. As a result, we've created hundreds of custom error messages that attempt to explain in simple terms what went wrong. Usually, when a developer first sees a new error message, it can be confusing and too often leads to "dead ends". We've done our very best (and are always improving) at hinting, nudging, and explaining how to best approach writing and running tests.
 
 ![writing-tests](https://cloud.githubusercontent.com/assets/1268976/23642090/4b1decee-02c6-11e7-8c5c-ac6a0842ae9b.gif)
 

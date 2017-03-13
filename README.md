@@ -47,7 +47,7 @@ Cypress is at once an open source local testing tool *and* a value-added service
 Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); however Cypress is both fundamentally and architecturally different. Cypress is not bound by the same restrictions as Selenium. Cypress enables us to write faster, more reliable tests that achieve **much more** test coverage. Cypress fundamentally shifts the way we test and build web applications.
 
 ## Features
-- **Familiar Tools:** built on tools such as [**Mocha**](https://mochajs.org/), [**Chai**](http://chaijs.com/), [**Sinon**](http://sinonjs.org/), and [**Electron**](https://electron.atom.io/)
+- **Familiar Tools:** built on the shoulders of such giants as [**Mocha**](https://mochajs.org/), [**Chai**](http://chaijs.com/), [**Sinon**](http://sinonjs.org/), and [**Electron**](https://electron.atom.io/)
 - **Extensive APIs:** offers over 80+ commands to intuitively drive the browser
 - **Network Stubbing:** easily mock edge cases; or, isolate from the back-end completely
 - **Developer Focused:** plugs directly into our existing development workflow
@@ -61,19 +61,19 @@ Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); ho
 
 ## Our Mission
 
-Cypress is built on the best open source technologies, and naturally we fully embrace open source. It's essential for us to be successful. Our services will always be **optional**, and Cypress itself will always work indepedently of them. Our [Dashboard](https://on.cypress.io/dashboard-features) even runs Public Projects for free - just like [Github](https://github.com/), [TravisCI](https://travis-ci.org/), [CircleCI](https://circleci.com) and other developer tools you know and love.
+Cypress is built on best-of-breed, industry-standard technologies, which naturally means we fully embrace open source. It's essential for us to be successful. Our paid services will always be **optional** and Cypress itself will always work independently of them. Our [Dashboard](https://on.cypress.io/dashboard-features) even runs Public Projects for free - just like [Github](https://github.com/), [TravisCI](https://travis-ci.org/), [CircleCI](https://circleci.com) and other developer tools we all know and love.
 
-Our mission is to build a thriving, open source ecosystem that enhances productivity, makes testing an enjoyable experience, and generates developer happiness. We hold ourselves accountable to champion a testing process **that actually works**. We expect our [documentation](https://on.cypress.io) to be simple, approachable, not presumptious, and enable you to fully understand not just the **what** but the **why**.
+Our mission is to build a thriving, open source ecosystem that enhances productivity, makes testing an enjoyable experience, and generates developer happiness. We hold ourselves accountable to champion a testing process **that actually works**. We expect our [documentation](https://on.cypress.io) to be simple and approachable, enabling the reader to fully understand not just **what**, but **why**.
 
-We want to help developers build a new generation of modern applications faster, better, and without the stress and anxiety associated with managing tests and their eventual failures.
+We want to help developers build a new generation of modern applications faster, better, and without the stress and anxiety associated with managing tests and their eventual, inevitable failures.
 
-We know that in order for us to be successful, that we must enable, nurture and provide a clear path to success for our users. Your test code is an investment into Cypress, and it will never be coupled to us as a company or team. Your code will always run independently and be free from needing us to exist.
+We know that in order for us to be successful we must enable, nurture, and provide a clear path to success for our users. Every line of test code is an investment in the Cypress ecosystem, it will never be coupled to us as a company or a team. Tests written in Cypress-the-application will run completely independently of Cypress-the-company, *always*.
 
-We believe testing needs a lot of love, and we are here to foster a tool, service, and community that everyone can learn and benefit from. We're here solving the hardest pain points that every developer working on the web identifies with. We hope that you'll join us in making Cypress a lasting community that helps everyone win.
+We believe testing needs a lot of love, and we are here to foster a tool, a service, and a community that everyone can learn and benefit from. We're solving the hardest pain points shared by every developer working on the web. We believe in this mission and hope that many will join us to make Cypress a lasting community that helps everyone win.
 
 # Why Cypress?
 
-The way we develop web applications has completely transformed over the last 5 years. The existing testing tools were built for a web that is long gone. When we try to test modern application using old tools, it doesn't work. Over and over again, we find that developers struggle with the following challenges:
+The way we develop web applications has completely transformed over the last 5 years. The existing testing tools were built for a web that is long gone. When we try to test modern application using old tools, it doesn't work. Over and over again, we struggle with the following challenges:
 
 - [Project Setup](#project-setup)
 - [Writing Tests](#writing-tests)
@@ -81,21 +81,21 @@ The way we develop web applications has completely transformed over the last 5 y
 
 ## Project Setup
 
-Developers often complain how difficult it is to start testing their projects. Oftentimes setup requires a considerable amount of configuration. Setup involves configuring many different tools, installing various browser drivers and writing a lot of boilerplate to get to the first test.
+Developers often complain how difficult it is to start testing their projects. Often, setup requires considerable configuration of many different tools, installing various browser drivers, and writing boilerplate to get to the first test.
 
-With Cypress, you can write your first passing test in **under 5 minutes**.
+With Cypress, we get to our first passing test in **under 5 minutes**.
 
-Cypress comes fully baked with every tool you need and just works out of the box. It can launch headed browsers and **even run headlessly** without a single additional installation step.
+Cypress comes fully baked with every tool you need and Just Works right out of the box. It can launch headed browsers and **even run headlessly** without a single additional installation step.
 
 Cypress comes with ES2015 support out of the box and is built on top of:
 
-- [Mocha](https://mochajs.org/)
-- [Chai](http://chaijs.com/)
-- [Sinon](http://sinonjs.org/)
+- [Mocha](https://mochajs.org/) rock-solid and configurable test runner
+- [Chai](http://chaijs.com/) versatile assertion library
+- [Sinon](http://sinonjs.org/) toolbox of spies, stubs, mocks, etc
 
-We provide you both a full GUI experience and offer a programatic [CLI tool](https://docs.cypress.io/docs/cli) to interact with Cypress.
+We provide a full GUI experience and a programmatic [CLI tool](https://docs.cypress.io/docs/cli) to interact with Cypress.
 
-When you [add your first project](https://docs.cypress.io/docs/projects#section-adding-a-new-project), we automatically seed it with example test code and provide you with a fully opinionated project structure.
+When [adding our first project](https://docs.cypress.io/docs/projects#section-adding-a-new-project), Cypress automatically seeds it with example test code and a fully opinionated project structure.
 
 ![project-setup](https://cloud.githubusercontent.com/assets/1268976/23642100/5983acec-02c6-11e7-8951-48cd40cb294b.gif)
 

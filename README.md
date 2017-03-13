@@ -61,7 +61,7 @@ Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); ho
 
 Cypress is built on the best open source technologies, and naturally we fully embrace open source. It's essential for us to be successful. Our services will always be **optional**, and Cypress itself will always work indepedently of them. Our [Dashboard](https://on.cypress.io/dashboard-features) even runs Public Projects for free - just like [Github](https://github.com/), [TravisCI](https://travis-ci.org/), [CircleCI](https://circleci.com) and other developer tools you know and love.
 
-Our mission is to build a thriving, open source ecosystem that enhances productivity, makes testing a fun enjoyable experience, and generates developer happiness. We hold ourselves accountable to champion a testing process **that actually works**. We expect our [documentation](https://on.cypress.io) to be simple, approachable, not presumptious, and enable you to fully understand not just the **what** but the **why**.
+Our mission is to build a thriving, open source ecosystem that enhances productivity, makes testing an enjoyable experience, and generates developer happiness. We hold ourselves accountable to champion a testing process **that actually works**. We expect our [documentation](https://on.cypress.io) to be simple, approachable, not presumptious, and enable you to fully understand not just the **what** but the **why**.
 
 We want to help developers build a new generation of modern applications faster, better, and without the stress and anxiety associated with managing tests and their eventual failures.
 
@@ -211,41 +211,41 @@ If you're coming from Selenium / Webdriver you might expect errors to look this 
 
 <img src="https://cloud.githubusercontent.com/assets/1268976/23825052/a9c1a2b2-0650-11e7-91c3-07ef5ddf9c3d.png" width="75%" />
 
-What's wrong with this error? Well, stack traces in the terminal are essentially useless. Browsers are enormously complex objects, and their behavior cannot possibly be boiled down to a single error (which is just a string of text).
+Browsers are enormously complex objects, and their behavior is difficult to be explained in a single error (which is just a string of text).
 
-Do you have any idea why this element isn't visible?
+Can you guess why the element above is not visible?
 
-These are all valid potential answers:
+These are multiple potential answers:
 
-- You wrote your selector wrong
-- Your app just hasn't rendered yet
-- Something in your Javascript code is throwing an error
-- A network request failed earlier (?)
-- A network request is currently in flight
+- The selector was written incorrectly
+- The app hasn't rendered yet
+- There's an error being thrown in the app's JavaScript code
+- A network request failed to respond and the element's visibility depends on it
+- A network request is still in flight
 - There is a real regression and a legitimate error
 
-The whole problem is that you cannot easily figure this out.
+The problem with existing test frameworks is that it's difficult to find the source of test errors.
 
 You're often left wondering:
 - is something **really** wrong?
 - did I write my test code properly?
-- or are my tests just **flaky** for no good reason?
+- or are my tests just **flaky**?
 
 At Cypress, we've built **everything** around solving this fundamental problem. We strive to provide you everything so that you can quickly understand **what** and more importantly **why** something failed.
 
 We've done this by:
 
-- Writing hundreds of custom error messages in plain english
+- Writing hundreds of custom error messages in plain English
 - Referencing you to external documentation for complex errors
-- Creating a dashboard to show you your recorded test runs
+- Creating a dashboard to show you the recorded test runs
 - Enabling Dev Tools access while tests run
 - Adding support for `debugger` in either test code **or** app code
 - Snapshotting and time traveling through all commands
-- Providing a GUI such as indicating number of elements found for a selector
-- Clicking on commands to see additional bits of information
-- Logging page events such as XHR's, form submissions, page loads, URL changes
+- Providing a GUI that indicates the state of commands like the number of elements found for a selector
+- Displaying additional commands information on click
+- Logging page events such as XHR's, form submissions, page loads and URL changes
 
-Even when you are testing headlessly and you see an error in the console it'll be much friendly and provide you a lot more data.
+Even when you are testing headlessly and you see an error in the console it's friendlier and provides a lot more data.
 
 Beyond just a friendly error, you'll also able to watch a video, see command logs, view screenshots, and soon you'll have [logs for literally everything that happened in the browser](https://github.com/cypress-io/cypress/issues/448) to help you track down a failure.
 

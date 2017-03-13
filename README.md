@@ -38,24 +38,26 @@
 
 # Overview
 
-Cypress is a next generation testing tool that enables developers to easily test their web applications. Typically our users are developers or QA engineers building web applications using modern JavaScript frameworks. Cypress enables developers to write **end to end tests**, **integration tests**, and **unit tests** that run in the browser.
+Welcome to Cypress: the next-generation testing tool for front-end professionals!
 
-Cypress is both a local testing tool, *and* a service. Typically you'd use Cypress locally to write tests **every day** while you build your application. After integrating Cypress into your CI Provider you can have [our Dashboard](https://on.cypress.io/dashboard-features) record your test runs and see the results.
+Typically, our users are developers or QA engineers building web applications using modern JavaScript frameworks. Cypress enables us to write **end to end tests**, **integration tests**, and **unit tests**, all of which run in the browser.
 
-Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); however Cypress is both fundamentally and architectually different. Cypress is not bound by the same restrictions as Selenium. Cypress enables you to write faster, more reliable tests and ultimately achieve **much more** test coverage. Cypress fundamentally shifts the way you can test and build your web applications.
+Cypress is at once an open source local testing tool *and* a value-added service for continuous integration. At first, we use Cypress to write tests **every day** as we build our application locally (we can even use TDD if we prefer). Later, once we've integrated Cypress with our CI Provider, the [Cypress Dashboard](https://on.cypress.io/dashboard-features) records our test runs and clearly presents the results (so we never have to ask "Why did this fail?")
+
+Cypress is most often compared to [**Selenium**](http://www.seleniumhq.org/); however Cypress is both fundamentally and architecturally different. Cypress is not bound by the same restrictions as Selenium. Cypress enables us to write faster, more reliable tests that achieve **much more** test coverage. Cypress fundamentally shifts the way we test and build web applications.
 
 ## Features
 - **Familiar Tools:** built on tools such as [**Mocha**](https://mochajs.org/), [**Chai**](http://chaijs.com/), [**Sinon**](http://sinonjs.org/), and [**Electron**](https://electron.atom.io/)
-- **Extensive APIs:** offers over 80+ commands to drive the browser
-- **Network Stubbing:** enables you to stub out your backend and mock edge cases
-- **Developer Focused:** helps you test every day using your typical development workflow
-- **Screenshots / Videos:** automatically records on failures and during headless runs
-- **Obvious Errors:** see exactly *what* went wrong so you understand what command failed and *why*
-- **Dev Tools / Debugger:** use every developer tool you're used to while you test
-- **Time Travel Snapshots:** time travel to every command with the ability to walk back through every test
+- **Extensive APIs:** offers over 80+ commands to intuitively drive the browser
+- **Network Stubbing:** easily mock edge cases; or, isolate from the back-end completely
+- **Developer Focused:** plugs directly into our existing development workflow
+- **Screenshots / Videos:** great, visual feedback for failures and headless runs
+- **Obvious Errors:** see exactly *what* went wrong and, more importantly, *why*
+- **Dev Tools / Debugger:** we can use all of our favorite developer tools while we test
+- **Time Travel Snapshots:** time travel to any command; step back through every test
 - **Fast Setup:** get up and running with no additional installation required
-- **Blazing Fast Runs:** tests run as fast as your server is capable of delivering content
-- **Automatic ES2015 Transpilation:** write modern code with zero configuration
+- **Blazing Fast Runs:** tests run as fast as our server can deliver the content
+- **ES2015 Friendly:** write modern code with zero configuration
 
 ## Our Mission
 

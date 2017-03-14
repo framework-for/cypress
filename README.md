@@ -207,15 +207,15 @@ Testing is both an art and a science, and Cypress brings new concepts to the tab
 
 ## Debuggability
 
-If you're coming from Selenium / Webdriver you might expect errors to look this like:
+We remember Selenium / Webdriver errors that look like this:
 
 <img src="https://cloud.githubusercontent.com/assets/1268976/23825052/a9c1a2b2-0650-11e7-91c3-07ef5ddf9c3d.png" width="75%" />
 
-Browsers are enormously complex objects, and their behavior is difficult to be explained in a single error (which is just a string of text).
+Browsers are enormously complex objects and their behavior is difficult to be explained with an error message (which is just a string of text).
 
-Can you guess why the element above is not visible?
+In the example above, why is the element above not visible?
 
-These are multiple potential answers:
+Here are a few potential answers:
 
 - The selector was written incorrectly
 - The app hasn't rendered yet
@@ -226,28 +226,28 @@ These are multiple potential answers:
 
 The problem with existing test frameworks is that it's difficult to find the source of test errors.
 
-You're often left wondering:
+We're often left wondering:
 - is something **really** wrong?
-- did I write my test code properly?
-- or are my tests just **flaky**?
+- did we write our test code properly?
+- or is this just inescapable **flakiness**?
 
-At Cypress, we've built **everything** around solving this fundamental problem. We strive to provide you everything so that you can quickly understand **what** and more importantly **why** something failed.
+At Cypress, we've built **everything** around solving this fundamental problem. Testers using Cypress have access to **all** the information to quickly understand **what**, and more importantly **why**, something failed.
 
 We've done this by:
 
 - Writing hundreds of custom error messages in plain English
-- Referencing you to external documentation for complex errors
-- Creating a dashboard to show you the recorded test runs
+- Referencing external documentation for complex errors
+- Creating a dashboard to view and collaborate over recorded test runs
 - Enabling Dev Tools access while tests run
-- Adding support for `debugger` in either test code **or** app code
-- Snapshotting and time traveling through all commands
-- Providing a GUI that indicates the state of commands like the number of elements found for a selector
-- Displaying additional commands information on click
-- Logging page events such as XHR's, form submissions, page loads and URL changes
+- Adding support for `debugger` in either test code **and** app code
+- Snapshotting and time-traveling through all commands
+- Providing a GUI that indicates the state of commands, like the number of elements found for a selector
+- Displaying additional command information on click
+- Logging page events such as XHRs, form submissions, page loads, and URL changes
 
-Even when you are testing headlessly and you see an error in the console it's friendlier and provides a lot more data.
+Even when testing headlessly, an error in the console is much friendlier and provides a lot more data.
 
-Beyond just a friendly error, you'll also able to watch a video, see command logs, view screenshots, and soon you'll have [logs for literally everything that happened in the browser](https://github.com/cypress-io/cypress/issues/448) to help you track down a failure.
+But a friendly error is not enough (it's still just a string of text trying to summarize very complex state), which is why we provide a video of the run, a list of command logs, a screenshot at the time of failure, and, soon, we'll have [detailed logs for absolutely everything that happened in the browser](https://github.com/cypress-io/cypress/issues/448) to help track down failures.
 
 ***
 

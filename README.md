@@ -326,15 +326,15 @@ But a friendly error is not enough (it's still just a string of text trying to s
 
 Cypress is not built on **Selenium / Webdriver**. While it's possible we may use Webdriver for very specific tasks in the future, our automation layer is completely different.
 
-Cypress ends up actually being the host application, while your application is tested **through** Cypress itself.
+Cypress ends up being the host application, while the application under test is tested **through** Cypress itself.
 
-This means we run in the same run loop as your application - we can listen to events from your application and respond in real time. It's impossible for us to "miss" elements, we automatically know that your elements are animating, are disabled, are readonly, when your page is unloading and transitioning, when your page *hasn't* loaded yet, when network requests are being sent and when responses have come back.
+This means we run in the same run loop as the application - we can listen to events from the application and respond *in real time*. It's impossible for us to "miss" elements, we automatically know that elements are animating, are disabled, are readonly, when the page is unloading and transitioning, when the page *hasn't* loaded yet, when network requests are being sent and when responses have come back.
 
-Whereas Webdriver is a stateless API that shoots remote commands into the browser (thus making it a black box) - because Cypress is surrounding your application that puts us in a vastly superior position.
+Whereas Webdriver is a stateless API that simply dispatches remote commands into the browser and treats it as a black box, Cypress surrounds the application itself, which is a more privileged and ultimately superior position.
 
-Cypress works as much as possible in regular Javascript, but can (and does) go outside of the Javascript sandbox for specific automation tasks.
+Cypress works as much as possible in regular JavaScript, but can (and does) go outside of the Javascript sandbox for specific automation tasks.
 
-This means we have the best of both worlds - if we want to synchronously query for elements we can - or if we want to talk to the browser's automation API's which are only exposed outside of Javascript we can do that too.
+This means we have the best of both worlds - if we want to synchronously query for elements we can - or if we want to talk to the browser's automation APIs (which are only exposed outside of JavaScript), we can do that too.
 
 This gives us flexibility and we can yield that same choice and flexibility back to the developer.
 
@@ -347,14 +347,14 @@ This gives us flexibility and we can yield that same choice and flexibility back
 - Security restrictions
 - Not for crawling the web
 - Not really for existing production applications
-- Not all API's have been implemented
-- No cross browser support
+- Not all APIs have been implemented
+- No cross-browser support
 - No native events (yet)
-- Developer / QA engineer focused (must understand your app)
+- Developer / QA engineer focused (must understand the app under test)
 
 # Further Reading
 
-Now that you have an idea of where we're going with Cypress, let's dive in!
+So that's where Cypress is going. Want to learn more? Great, let's dive in!
 
 Link | Description
 :--- | :---

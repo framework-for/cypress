@@ -85,7 +85,7 @@ Developers often complain how difficult it is to start testing their projects. O
 
 With Cypress, we get to our first passing test in **under 5 minutes**.
 
-Cypress comes fully baked with every tool you need and Just Works right out of the box. It can launch headed browsers and **even run headlessly** without a single additional installation step.
+Cypress comes fully baked with every tool we need and Just Works right out of the box. It can launch headed browsers and **even run headlessly** without a single additional installation step.
 
 Cypress comes with ES2015 support out of the box and is built on top of:
 
@@ -125,22 +125,22 @@ We fundamentally believe in developer happiness. As a result, we've created hund
 
 ## Management
 
-With the existing testing tools - after you've spent days, weeks, or even months building up a fleet of tests - you will often run them in CI (Continuous Integration).
+Now that we've spent all this time building up a fleet of tests -- or perhaps because we've got many collaborators and need to coordinate -- we turn to CI (Continuous Integration) to ease the burden of ensuring they pass every time anyone commits new code.
 
-The problem we find here is that due to the architecture problems of Selenium, it is nearly impossible to manage these tests. They often fail for "no good reason", and while it is possible - getting screenshots, videos, and logs of what happened takes a lot of work. Without these, debugging failing tests is nearly impossible and it's where time and productivity is lost.
+The problem we find here is that, due to the architecture problems of Selenium, it is nearly impossible to manage these tests. They often fail for "no good reason" and we're left scrambling to figure out how to extract useful artifacts like screenshots, videos, and logs of what happened. This takes a lot of work! But without these, debugging failing tests is nearly impossible, leading to wasted time and lost productivity.
 
-Cypress comes fully baked with video and screenshot support. A video will always be created when you run headlessly, and screenshots will automatically be taken on failure (or when you've manually told us to take one).
+Cypress comes fully baked with video and screenshot support. A video is always created when we run headlessly, and screenshots are automatically taken on failure (as well as on-demand when our test code asks for them).
 
-We also enable you to **record your test runs** on our [Dashboard](https://on.cypress.io/dashboard). This is a service we've built that gives you easy access to see and share your recorded runs.
+Cypress also enables us to seamlessly **upload and share our test runs** through the [Dashboard](https://on.cypress.io/dashboard). This service gives you easy access to see and share your recorded runs.
 
 Our Dashboard is attempting to solve some of the hardest challenges of managing tests in CI. We are working towards:
 
-- giving you live access to your CI runs
-- providing you all network requests / responses you can inspect later
-- [providing you logs of **everything** that happened inside of the browser](https://github.com/cypress-io/cypress/issues/448)
-- analytics which can tell you details about the overall health of your tests
+- providing live access to CI runs
+- providing all network requests / responses for inspection
+- [providing logs of **everything** that happened inside of the browser](https://github.com/cypress-io/cypress/issues/448)
+- analytics which provide insight about the overall health of our tests
 - an intelligent "diff" of a test which failed today but passed previously
-- cross browser support with automatic integration into Sauce Labs + Browser Stack
+- cross-browser support with automatic integration into Sauce Labs + Browser Stack
 - screenshot diff'ing for visual regression testing
 
 ![dashboard](https://cloud.githubusercontent.com/assets/1268976/23642018/0a8c46c6-02c6-11e7-82b5-2c1690b7dbf3.gif)

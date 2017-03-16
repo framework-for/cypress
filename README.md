@@ -25,15 +25,17 @@
   - [Writing Tests](#writing-tests)
   - [Management](#management)
 - [Key Differences](#key-differences)
-  - [A New Paradigm](#a-new-paradigm)
-  - [Testing Pyramid](#testing-pyramid)
+  - [Architecture](#videos--screenshots)
   - [Debuggability](#debuggability)
-  - [Flakiness](#flakiness)
-  - [Control](#control)
+  - [Full Control](#control)
+  - [Combatting Flake](#flakiness)
   - [Network Stubbing](#network-stubbing)
   - [Videos / Screenshots](#videos--screenshots)
-  - [Architecture](#videos--screenshots)
   - [Trade Offs](#trade-offs)
+- [Testing Strategy](#a-new-paradigm)
+  - [End-to-End Tests](#a-new-paradigm)
+  - [Integration Tests](#a-new-paradigm)
+  - [Unit Tests](#testing-pyramid)
 - [Further Reading](#further-reading)
 
 # Overview
@@ -149,7 +151,58 @@ Our Dashboard is attempting to solve some of the hardest challenges of managing 
 
 Let's investigate some of the key differences between Cypress and other testing tools.
 
-## A New Paradigm
+## Architecture
+
+Cypress is **not built** on **Selenium / Webdriver**. While it's possible we may use Webdriver for very specific tasks in the future, our automation layer is completely different.
+
+These very specific architectural changes unlocks nearly all of the key advantages and is what separates Cypress from every other existing testing tool.
+
+Cypress is comprised of many discretely independently functioning parts that all together make Cypress work.
+
+For instance Cypress is all of these things:
+
+- Desktop application written in Electron
+- Node server running in the background
+- Proxy layer which routes and modifies all of your HTTP traffic
+- Websocket server handling events from the browser application
+- File server for static file serving
+- GUI browser application which you test your own application through
+- Universal Driver which drives your web application
+- Automation API layer which implements each command
+- API that you write your tests in
+- Browser launcher with its own browser extensions
+- Certificate Authority and HTTPS proxy
+- Spec file preprocessor and error handler
+- File watcher
+- CLI tool
+
+When you begin writing your tests in Cypress the first thing you'll notice is that Cypress **itself** ends up being the host application.
+
+When you `cy.visit` your application, this is literally "pulled" into Cypress and gives us several significant advantages.
+
+When Cypress is running, its coordinating your test commands, the automation layers, and the state of your application in real time.
+
+Because Cypress runs in the same run loop as your application, this gives us significant advantages.
+
+For instance we can:
+
+- listen to events coming from your application and immediately respond to them
+- automatically know when elements are animating and wait for them to spot
+- always generate events at the right coordinates - its impossible for us to "miss"
+- intelligently handle disabled or readonly elements
+- know the moment a page unload has started, pause command execution, and continue again
+- automatically know the moment your application reaches the desired state of your assertions
+- take shortcuts and force events to happen programatically
+- wait for network requests to go out and finish
+- have native access to literally every object, function, method of your application
+- spy or stub on anything in your 3rd party JS code or app code
+- modify and change time - just like in a unit test
+
+While we do much of the automation work in JavaScript itself - we can choose to go outside of the JavaScript sandbox to access automation commands which are restricted to a higher priviledge. We can even invoke native OS commands if we wanted to.
+
+This means we have the best of both worlds. We can do work entirely in the browser, and then choose when its most appropriate to go outside of them. It's possible we will even yield you this choice and flexibility.
+
+## Testing Pyramid
 
 Contracts between client + server. Total control. Unit test like. Less e2e, more integration. Bypass the UI. Take shortcuts. Be precise.
 
@@ -293,50 +346,67 @@ But a friendly error is not enough (it's still just a string of text trying to s
 
 <img src="https://cloud.githubusercontent.com/assets/1268976/23826781/144e60e0-0672-11e7-995d-64e92bc43e65.gif" width="80%" />
 
-## Flakiness
+## Combatting Flake
 
-- Webdriver remote protocol is the problem
-- Doesn't understand what's going on in the page
-- Cypress innovative assertions to page state
-- Never explicit waits
-- Can modify its behavior in real time
+Flake occurs when a test inconsistently passes or fails for seemingly "no good reason". Let's investigate the underlying reasons why this happens:
 
-## Control
+- Existing testing architecture is built as a stateless HTTP API
+- Modern JavaScript applications render asynchronously
+- Modern applications make heavy use of XHR, fetch, and websockets
 
-- Native access to every object
-- Spying / stubbing support
-- Network traffic stubbing
-- Waiting on request / responses
-- Assertions on requests
-- Edge case management
-- Tighter control between the server + client
+### Existing Architecture
 
-## Networking Stubbing
+Years ago, when we built web applications they were stateless. When you submitted a form, or clicked a link the browser would make a round trip to the server for the entire new HTML payload.
 
-- Control webserver
-- Build without even having a server
+For these kinds of applications, Selenium / Webdriver worked great - state changes were simple and easy to test.
+
+Unfortunately, with the advent of modern JavaScript frameworks and by embracing the full power of JavaScript asynchronicity - new application we build today are difficult to test for.
+
+This is because Webdriver is a **stateless HTTP API** which executes remote commands into the browser. Today's applications are **stateful** which means their state is "a smear" that changes gradually over a period of time. This is made even more complicated by modern frameworks that additionally render asycnrhonously.
+
+You cannot use a stateless HTTP API to test a stateful system. Because commands are executed remotely, Webdriver is unable to react or even fully understand what it happening in the browser. It can get a "snapshot" of what is going on but it has no idea what is "about" to happen.
+
+Cypress has a completely different architecture than Webdriver. When you test in Cypress, the host application **is** Cypress itself - and from there you "pull in" the application under test.
+
+This means Cypress itself runs in the same run loop at your application. This means that not only do you have **native access** to every single object in your application, but that Cypress can sychronously query for elements, it can add and react to event listeners on your page, it even knows the moment the page begins "unloading" and can pause command execution.
+
+We've designed our API's to fight and reduce flake wherever possible. For instance, every single assertion you right is automatically retryable - that is you simple describe the "state of your application" and Cypress will automatically wait until your application reaches that state.
+
+Cypress can even "look downstream" at a series of commands and assertions and can modify its behavior in real time.  We completely insulate you from having to worry about whether or not your application has ever fully rendered.
+
+## Full Control
+
+Instead of serializing objects "over the wire", you actually have native access to everything in your application.
+
+This means you can literally call functions, bind to events, stub methods, spy on anything like `console.log`, modify 3rd party libs, even change time and tick it forward.
+
+Testing in Cypress actually feels like a mixture between a unit test, an integration test, and an e2e test. By yielding you ultimate control over your application, you can control it and automate it much more precisely and consistently.
+
+You can also take advantage of these API's to do things like "tricking your application" that it's logged in without involving 3rd party sites to do things like oauth authentication. Testing edge cases becomes a breeze.
+
+## Network Stubbing
+
+Because Cypress is a proxy that sits between your application and your webserver - this gives us the ability to modify any of your traffic.
+
+While we currently only allow you to to stub XHR requests, everything is architecturally built to be able to modify or change **any type of HTTP request** - even websocket frames.
+
+Right now, our users modify XHR responses to easily test edge cases. This allows you to  test situations such as pagination or empty views. You can simply respond with the JSON payloads your frontend application expects, and it won't have any idea the request was intercepted. There are no changes to your code.
+
+Besides modifying traffic, we provide you API's to access the XHR request payloads to make assertions about them. Cypress also enables you to programatically wait on XHR requests to happen and for responses to come back.
+
+By waiting for XHR's to happen, it provides you a much tighter contract between your test code and your application code. Instead of causing a side effect and then waiting for that side effect in the DOM, you can explictly describe that "clicking a button" should send an XHR matching a specific URL you specified. Cypress would then intelligently wait on this response before continuing its command execution. We even give you the power to make assertions on the actual response bodies!
+
+When you stub your own network traffic this gives you the ability to build your web applications ahead of your server's API endpoints.
+
+You can instead iterate on the data structure and stub requests in Cypress before your server is even built.
 
 ## Videos / Screenshots
 
-- Headless video recording
-- Screenshots when tests fail
-- Hosted on our dashboard
+When you tell Cypress to run headlessly, either locally or in CI we will automatically record a video. When tests fail, we'll automatically take a screenshot (or when you've manually told us to).
 
-## Architecture
+After you setup your project to record on our Dashboard, we'll automatically upload these artifacts and host them for you.
 
-Cypress is not built on **Selenium / Webdriver**. While it's possible we may use Webdriver for very specific tasks in the future, our automation layer is completely different.
-
-Cypress ends up being the host application, while the application under test is tested **through** Cypress itself.
-
-This means we run in the same run loop as the application - we can listen to events from the application and respond *in real time*. It's impossible for us to "miss" elements, we automatically know that elements are animating, are disabled, are readonly, when the page is unloading and transitioning, when the page *hasn't* loaded yet, when network requests are being sent and when responses have come back.
-
-Whereas Webdriver is a stateless API that simply dispatches remote commands into the browser and treats it as a black box, Cypress surrounds the application itself, which is a more privileged and ultimately superior position.
-
-Cypress works as much as possible in regular JavaScript, but can (and does) go outside of the Javascript sandbox for specific automation tasks.
-
-This means we have the best of both worlds - if we want to synchronously query for elements we can - or if we want to talk to the browser's automation APIs (which are only exposed outside of JavaScript), we can do that too.
-
-This gives us flexibility and we can yield that same choice and flexibility back to the developer.
+We also automatically record things like `stdout` and give you easy access to specific test failures, stack traces, screenshots, and the ability to play videos from the start of the failing test.
 
 ## Trade Offs
 

@@ -30,9 +30,8 @@
   - [Full Control](#control)
   - [Combatting Flake](#flakiness)
   - [Network Stubbing](#network-stubbing)
-  - [Videos / Screenshots](#videos--screenshots)
   - [Trade Offs](#trade-offs)
-- [Testing Strategy](#a-new-paradigm)
+- [Testing Strategies](#a-new-paradigm)
   - [End-to-End Tests](#a-new-paradigm)
   - [Integration Tests](#a-new-paradigm)
   - [Unit Tests](#testing-pyramid)
@@ -202,62 +201,6 @@ While we do much of the automation work in JavaScript itself - we can choose to 
 
 This means we have the best of both worlds. We can do work entirely in the browser, and then choose when its most appropriate to go outside of them. It's possible we will even yield you this choice and flexibility.
 
-## Testing Pyramid
-
-Contracts between client + server. Total control. Unit test like. Less e2e, more integration. Bypass the UI. Take shortcuts. Be precise.
-
-**Do not think of Cypress as a 1:1 replacement for Selenium.**
-
-With Cypress, we have a **choice** about how to we write our tests. We can write "pure" e2e tests, which are similar to what we've done in the past with Selenium. But we can also do **much, much more**.
-
-Use cases:
-
-- importing our react components and calling methods on them programmatically (unit testing)
-- short-circuiting our authentication flow when it isn't the system-under-test (huge speed boosts)
-- mocking/stubbing XHRs completely (SPAs where the front-end is a stand-alone app)
-
-We have a lot of [recipes showing what Cypress can do](https://github.com/cypress-io/cypress-example-recipes).
-
-## Testing Pyramid
-
-Just like a balanced diet, the testing pyramid recommends 3 primary layers of testing.
-
-1. End-to-End Tests
-2. Integration Tests
-3. Unit Tests
-
-### End-to-End Tests
-
-End-to-end tests are what we typically do with Selenium. It drives the browser like a real user. The application does what it does and we have very little control. The tests "act like a user". Want to test a chat application with 5 users talking in a group? 5 separate browsers are needed, all connected to the same server and sharing state. **These tests are fundamentally unscalable and we recommend these as little as possible**.
-
-Test the critical paths of the application without any kind of stubbing. This ensures the contract between the back-end and front-end services match up.
-
-The pyramid suggests that these tests should be in shortest supply. In a test suite of 1000 tests for example, no more than about 25-50 of these should be e2e.
-
-There is **always** a better, more practical, and more reliable way to get the same value and coverage while writing a faster, tighter test.
-
-### Integration Tests
-
-This is the bread and butter of Cypress. We still want to visit our application and drive it like a user - but we'll take **as many shortcuts as possible**.
-
-A great example is authentication. We'll certainly write some tests the exercise the login functionality itself, but once that is done we want to avoid repeating those steps for every test. Repeating for emphasis: **WE DO NOT USE THE UI TO LOG IN**. Instead, we simply stitch together the seams of the login experience. In other words, bypass the UI and make the actual request that causes the user to log in.
-
-Another approach is to stub out the server altogether and "trick" the application into thinking it's logged in. This might be done by setting a value in local storage or a cookie, or by stubbing a function such as a 3rd-party OAuth library.
-
-Now we aren't repeating the same UI actions over and over again with each test (which creates no additional value but certainly slows things down!) We can test specific features without the baggage and ceremony of driving the app into a specific state via its UI for each test.
-
-Cypress can also stub network traffic, giving us unprecedented control of the seam between the client and server. We can make the back-end return whatever data we want, for example when the API is in flux, or before the API even exists at all! (The Cypress team itself leverages this workflow to build up the experience and application flow we desire before ever writing a line of back-end/API code.)
-
-Now we can easily do things like test our "empty" views and "pagination" views without ever sending a request or touching a database.
-
-An entire host of e2e problems are avoided and we retain complete control.
-
-SEEK THE SEAMS
-
-While Cypress makes things easy, it is still a programmer's tool. We know we will be writing code to achieve our goals, but we are continually surprised by how little complexity is necessary. By following the best practices, we can achieve simple, declarative, and effective tests.
-
-Testing is both an art and a science, and Cypress brings new concepts to the table as well. We know it takes time to deeply understand this new paradigm and let go the patterns of the past which no longer serve us. Cypress enables a new workflow and we have to learn to deconstruct our applications in new ways, teasing apart the seams to enable better, faster tests.
-
 ## Debuggability
 
 We remember Selenium / Webdriver errors that look like this:
@@ -346,34 +289,6 @@ But a friendly error is not enough (it's still just a string of text trying to s
 
 <img src="https://cloud.githubusercontent.com/assets/1268976/23826781/144e60e0-0672-11e7-995d-64e92bc43e65.gif" width="80%" />
 
-## Combatting Flake
-
-Flake occurs when a test inconsistently passes or fails for seemingly "no good reason". Let's investigate the underlying reasons why this happens:
-
-- Existing testing architecture is built as a stateless HTTP API
-- Modern JavaScript applications render asynchronously
-- Modern applications make heavy use of XHR, fetch, and websockets
-
-### Existing Architecture
-
-Years ago, when we built web applications they were stateless. When you submitted a form, or clicked a link the browser would make a round trip to the server for the entire new HTML payload.
-
-For these kinds of applications, Selenium / Webdriver worked great - state changes were simple and easy to test.
-
-Unfortunately, with the advent of modern JavaScript frameworks and by embracing the full power of JavaScript asynchronicity - new application we build today are difficult to test for.
-
-This is because Webdriver is a **stateless HTTP API** which executes remote commands into the browser. Today's applications are **stateful** which means their state is "a smear" that changes gradually over a period of time. This is made even more complicated by modern frameworks that additionally render asycnrhonously.
-
-You cannot use a stateless HTTP API to test a stateful system. Because commands are executed remotely, Webdriver is unable to react or even fully understand what it happening in the browser. It can get a "snapshot" of what is going on but it has no idea what is "about" to happen.
-
-Cypress has a completely different architecture than Webdriver. When you test in Cypress, the host application **is** Cypress itself - and from there you "pull in" the application under test.
-
-This means Cypress itself runs in the same run loop at your application. This means that not only do you have **native access** to every single object in your application, but that Cypress can sychronously query for elements, it can add and react to event listeners on your page, it even knows the moment the page begins "unloading" and can pause command execution.
-
-We've designed our API's to fight and reduce flake wherever possible. For instance, every single assertion you right is automatically retryable - that is you simple describe the "state of your application" and Cypress will automatically wait until your application reaches that state.
-
-Cypress can even "look downstream" at a series of commands and assertions and can modify its behavior in real time.  We completely insulate you from having to worry about whether or not your application has ever fully rendered.
-
 ## Full Control
 
 Instead of serializing objects "over the wire", you actually have native access to everything in your application.
@@ -383,6 +298,34 @@ This means you can literally call functions, bind to events, stub methods, spy o
 Testing in Cypress actually feels like a mixture between a unit test, an integration test, and an e2e test. By yielding you ultimate control over your application, you can control it and automate it much more precisely and consistently.
 
 You can also take advantage of these API's to do things like "tricking your application" that it's logged in without involving 3rd party sites to do things like oauth authentication. Testing edge cases becomes a breeze.
+
+## Combatting Flake
+
+Flake occurs when a test inconsistently passes or fails for seemingly "no good reason". Here are some of typical reasons why this happens:
+
+- Existing testing tools automate via a stateless HTTP API
+- Modern JavaScript applications render asynchronously
+- Modern applications make heavy use of XHR, fetch, and websockets
+
+Years ago, when we built web applications they were stateless. When you submitted a form, or clicked a link the browser would make a round trip to the server for the entire new HTML payload.
+
+For these kinds of applications, Selenium / Webdriver worked great - state changes were simple and easy to test.
+
+Unfortunately, with the advent of modern JavaScript frameworks and by embracing the full power of JavaScript asynchronicity - new application we build today are difficult to test using existing testing tools.
+
+This is because Webdriver is a **stateless HTTP API** which executes remote commands into the browser. Today's applications are **stateful** which means their state is "a smear" that changes gradually over a period of time.
+
+A stateless API cannot accurately test a stateful application. Because commands are executed remotely, Webdriver is unable to react or fully understand what it happening in the browser. It can get a "snapshot" of what is going on but it has no idea what is "about" to happen, or when exactly it "does" happen.
+
+Cypress has a completely different architecture than Webdriver. When you test in Cypress, the host application **is** Cypress itself - and from there you "pull in" the application under test.
+
+This means Cypress itself runs in the same run loop at your application. This means that not only do you have **native access** to every single object in your application, but that Cypress can sychronously query for elements, it can add and react to event listeners on your page, it even knows the moment the page begins "unloading" and can pause command execution.
+
+We've designed our API's to fight and reduce flake wherever possible. For instance, every single assertion you right is automatically retryable - that is you simple describe the "state of your application" and Cypress will automatically wait until your application reaches that state.
+
+Cypress can even "look downstream" at a series of commands and assertions and can modify its behavior in real time.  We completely insulate you from having to worry about whether or not your application has ever fully rendered.
+
+We automatically intelligently retry everything until it passes.
 
 ## Network Stubbing
 
@@ -400,14 +343,6 @@ When you stub your own network traffic this gives you the ability to build your 
 
 You can instead iterate on the data structure and stub requests in Cypress before your server is even built.
 
-## Videos / Screenshots
-
-When you tell Cypress to run headlessly, either locally or in CI we will automatically record a video. When tests fail, we'll automatically take a screenshot (or when you've manually told us to).
-
-After you setup your project to record on our Dashboard, we'll automatically upload these artifacts and host them for you.
-
-We also automatically record things like `stdout` and give you easy access to specific test failures, stack traces, screenshots, and the ability to play videos from the start of the failing test.
-
 ## Trade Offs
 
 - One superdomain per test
@@ -421,6 +356,90 @@ We also automatically record things like `stdout` and give you easy access to sp
 - No cross-browser support
 - No native events (yet)
 - Developer / QA engineer focused (must understand the app under test)
+
+# Testing Strategies
+
+With Cypress, you have the ultimate **choice** about choosing the right combination of strategies to write your tests.
+
+**Do not think of Cypress as a simple 1:1 replacement for Selenium.**
+
+While you can write e2e tests similar to what you do in Selenium, you can test much more in Cypress.
+
+To give you a clear idea of what we mean, let's assume we're building a **large scale application** using a modern framework like React.
+
+## End-to-End Tests
+
+Write only a handful of these. Maybe 2-5% of your tests. Test the critical paths only. No edge cases. These will be slow. If you find a restriction in Cypress, continue to write these tests in Selenium. There's nothing wrong with that!
+
+## Integration Tests
+
+Test while you build. Stub out your server. Test edge cases. Bypass your UI as much as possible. Take shortcuts. Stub out 3rd party libs.
+
+## Unit Tests
+
+You can use Cypress to even unit test your browser based libs, utilities or components.
+
+You can test any JavaScript code that eventually makes its way into a browser!
+
+Use cases:
+
+- Importing react components and testing them programatically
+- Rendering components into the "application" area of Cypress
+
+---
+
+Contracts between client + server. Total control. Unit test like. Less e2e, more integration. Bypass the UI. Take shortcuts. Be precise.
+
+
+With Cypress, we have a **choice** about how to we write our tests. We can write "pure" e2e tests, which are similar to what we've done in the past with Selenium. But we can also do **much, much more**.
+
+Use cases:
+
+- importing our react components and calling methods on them programmatically (unit testing)
+- short-circuiting our authentication flow when it isn't the system-under-test (huge speed boosts)
+- mocking/stubbing XHRs completely (SPAs where the front-end is a stand-alone app)
+
+We have a lot of [recipes showing what Cypress can do](https://github.com/cypress-io/cypress-example-recipes).
+
+## Testing Pyramid
+
+Just like a balanced diet, the testing pyramid recommends 3 primary layers of testing.
+
+1. End-to-End Tests
+2. Integration Tests
+3. Unit Tests
+
+### End-to-End Tests
+
+End-to-end tests are what we typically do with Selenium. It drives the browser like a real user. The application does what it does and we have very little control. The tests "act like a user". Want to test a chat application with 5 users talking in a group? 5 separate browsers are needed, all connected to the same server and sharing state. **These tests are fundamentally unscalable and we recommend these as little as possible**.
+
+Test the critical paths of the application without any kind of stubbing. This ensures the contract between the back-end and front-end services match up.
+
+The pyramid suggests that these tests should be in shortest supply. In a test suite of 1000 tests for example, no more than about 25-50 of these should be e2e.
+
+There is **always** a better, more practical, and more reliable way to get the same value and coverage while writing a faster, tighter test.
+
+### Integration Tests
+
+This is the bread and butter of Cypress. We still want to visit our application and drive it like a user - but we'll take **as many shortcuts as possible**.
+
+A great example is authentication. We'll certainly write some tests the exercise the login functionality itself, but once that is done we want to avoid repeating those steps for every test. Repeating for emphasis: **WE DO NOT USE THE UI TO LOG IN**. Instead, we simply stitch together the seams of the login experience. In other words, bypass the UI and make the actual request that causes the user to log in.
+
+Another approach is to stub out the server altogether and "trick" the application into thinking it's logged in. This might be done by setting a value in local storage or a cookie, or by stubbing a function such as a 3rd-party OAuth library.
+
+Now we aren't repeating the same UI actions over and over again with each test (which creates no additional value but certainly slows things down!) We can test specific features without the baggage and ceremony of driving the app into a specific state via its UI for each test.
+
+Cypress can also stub network traffic, giving us unprecedented control of the seam between the client and server. We can make the back-end return whatever data we want, for example when the API is in flux, or before the API even exists at all! (The Cypress team itself leverages this workflow to build up the experience and application flow we desire before ever writing a line of back-end/API code.)
+
+Now we can easily do things like test our "empty" views and "pagination" views without ever sending a request or touching a database.
+
+An entire host of e2e problems are avoided and we retain complete control.
+
+SEEK THE SEAMS
+
+While Cypress makes things easy, it is still a programmer's tool. We know we will be writing code to achieve our goals, but we are continually surprised by how little complexity is necessary. By following the best practices, we can achieve simple, declarative, and effective tests.
+
+Testing is both an art and a science, and Cypress brings new concepts to the table as well. We know it takes time to deeply understand this new paradigm and let go the patterns of the past which no longer serve us. Cypress enables a new workflow and we have to learn to deconstruct our applications in new ways, teasing apart the seams to enable better, faster tests.
 
 # Further Reading
 
